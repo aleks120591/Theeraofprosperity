@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">" The era of prosperity"</string>
+
+    <string name="hut">Хижина</string>
+    <string name="frame_house">Каркасный домик</string>
+    <string name="wooden_house">Деревянный дом</string>
+    <string name="stone_house">Каменный дом</string>
+    <string name="home_from_a_bar">Дом из бруса</string>
+    <string name="house_unit">Дом из блока</string>
+    <string name="estate">Имение</string>
+    <string name="farmstead">Усадьба</string>
+    <string name="stock">Склад</string>
+    <string name="market">Рынок</string>
+    <string name="quarry">Каменоломня</string>
+    <string name="smithy">Кузница</string>
+    <string name="mines">Горное управление</string>
+    <string name="construction_management">Строительное управление</string>
+    <string name="guild_of_shadows">Гильдия теней</string>
+    <string name="city_hall">Городская ратуша</string>
+    <string name="quarters">Казармы</string>
+    <string name="city_walls">Городские стены</string>
+    <string name="training_ground">Тренировочная площадка</string>
+    <string name="fort_glory">Форт славы</string>
+    <string name="stable">Конюшня</string>
+    <string name="order_of_valor">Орден доблести</string>
+    <string name="arena">Арена</string>
+    <string name="cathedral">Собор</string>
+    <string name="palace">Дворец</string>
+    <string name="castle">Замок</string>
+    <string name="fort_kulash">Форт Кулаш</string>
+    <string name="the_gold_mine">Золотоносная шахта</string>
+    <string name="diamond_mine">Бриллиантовая шахта</string>
+    <string name="mithril_mine">Митриловая шахта</string>
+    <string name="eritovaya_mine">Эритовая шахта</string>
+    <string name="orichalcum_min">Орихалковая шахта</string>
+
+    <string name="building">Построить</string>
+    <string name="action_settings">Настройки</string>
+    <string name="new_constr">New Constr</string>
+    <string name="menu_item_home">Постройки / Ресурсы</string>
+    <string name="search_title">search</string>
+    <string name="after_construction">После постройки:</string>
+
+</resources>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/constr_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_hut"/>
+
+    <TextView
+        android:id="@+id/constr_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/constr_image"
+        android:layout_toEndOf="@+id/constr_image"
+        android:text=""
+        android:textSize="18sp"/>
+
+    <Button
+        android:id="@+id/building"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="11dp"
+        android:text="@string/building"
+        android:textSize="12dp"/>
+
+    <TextView
+        android:id="@+id/times_building"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/building"
+        android:layout_alignStart="@+id/building"
+        android:layout_marginBottom="1dp"
+        android:layout_marginStart="20dp"
+        android:text=""
+        android:textSize="16dp"/>
+
+    <TextView
+        android:id="@+id/plus_the_increase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/times_building"
+        android:layout_alignStart="@+id/growth"
+        android:layout_marginBottom="14dp"
+        android:text="@string/after_construction"/>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/constr_image"
+        android:layout_marginTop="15dp"
+        android:text=""/>
+
+    <TextView
+        android:id="@+id/growth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/plus_the_increase"
+        android:layout_alignStart="@+id/constr_image"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"
+        android:text=""/>
+</RelativeLayout>
