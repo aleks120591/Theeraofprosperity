@@ -50,7 +50,6 @@ public class BuildingFragment extends Fragment {
         super.onCreate(savedInstanceState);
         UUID buildId = (UUID) getArguments().getSerializable(ARG_BUILD_ID);
         mBuildings = BuildingLab.get(getActivity()).getBuild(buildId);
-
     }
 
     @Override
@@ -65,7 +64,7 @@ public class BuildingFragment extends Fragment {
 
         mTimerView = (TextView) v.findViewById(R.id.times_building);
         mTimerView.setText(mBuildings.getTimer());
-        mTimer = new Timers(300000, TIME_SEC);
+        mTimer = new Timers(mBuildings.getTime(), TIME_SEC);
 
         mBuildingButton = (Button) v.findViewById(R.id.building);
         mBuildingButton.setOnClickListener(new OnClickListener() {
