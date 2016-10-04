@@ -64,6 +64,7 @@ public class BuildingFragment extends Fragment {
 
         mTimerView = (TextView) v.findViewById(R.id.times_building);
         mTimerView.setText(mBuildings.getTimer());
+
         long tim = mBuildings.getTim();
         mTimer = new Timers(tim, TIME_SEC);
 

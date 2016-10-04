@@ -29,7 +29,7 @@ public class BuildingLab {
             buildings.setImage(CONST.IMAGES[i]);
             buildings.setTitle(CONST.TITLES[i]);
             buildings.setTimer(CONST.TIMERS[i]);
-            buildings.setTime(CONST.mTimers[i]);
+            buildings.setTim(CONST.mTimers[i]);
             mList.add(buildings);
         }
     }
