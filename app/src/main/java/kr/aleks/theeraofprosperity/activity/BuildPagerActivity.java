@@ -50,7 +50,7 @@ public class BuildPagerActivity extends FragmentActivity {
             @Override
             public Fragment getItem(int position) {
                 AboutBuildings buildings = mLists.get(position);
-                return BuildingFragment.newInstance(buildings.getId(), buildings.getTimer());
+                return BuildingFragment.newInstance(buildings.getId());
             }
 
             @Override
