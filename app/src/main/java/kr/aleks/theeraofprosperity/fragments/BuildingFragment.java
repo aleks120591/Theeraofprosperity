@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -37,7 +36,7 @@ public class BuildingFragment extends Fragment {
 
     private CountDownTimer mTimer;
 
-    public static BuildingFragment newInstance(UUID buildId, String timer) {
+    public static BuildingFragment newInstance(UUID buildId) {
         Bundle args = new Bundle();
         args.putSerializable(ARG_BUILD_ID, buildId);
 
@@ -72,15 +71,10 @@ public class BuildingFragment extends Fragment {
         mBuildingButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager manager = getFragmentManager();
-                TimerPickerFragment dialog = TimerPickerFragment
-                        .newInstance(mBuildings.getTimer());
-                dialog.setTargetFragment(BuildingFragment.this, REQUEST_TIMER);
-                dialog.show(manager, DIALOG_TIMER);
-                /*mTimerView.setText("");
+                mTimerView.setText("");
                 mTimer.start();
                 mBuildingButton.setEnabled(false);
-                mBuildingButton.setTextColor(primary_dark_material_dark);*/
+                mBuildingButton.setTextColor(R.color.colorBlack);
             }
         });
         return v;
