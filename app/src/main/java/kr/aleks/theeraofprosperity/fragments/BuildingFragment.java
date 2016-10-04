@@ -64,7 +64,8 @@ public class BuildingFragment extends Fragment {
 
         mTimerView = (TextView) v.findViewById(R.id.times_building);
         mTimerView.setText(mBuildings.getTimer());
-        mTimer = new Timers(mBuildings.getTime(), TIME_SEC);
+        long tim = mBuildings.getTim();
+        mTimer = new Timers(tim, TIME_SEC);
 
         mBuildingButton = (Button) v.findViewById(R.id.building);
         mBuildingButton.setOnClickListener(new OnClickListener() {

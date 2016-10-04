@@ -2,14 +2,12 @@ package kr.aleks.theeraofprosperity.data;
 
 import java.util.UUID;
 
-import static kr.aleks.theeraofprosperity.R.string.timer;
-
 public class AboutBuildings {
 
     private UUID mId;
     private String mTitle;
     private String mTimer;
-    private int mTime;
+    private long mTim;
     private int mImage;
 
     public AboutBuildings() {
@@ -58,14 +56,14 @@ public class AboutBuildings {
         mTimer = timer;
     }
 
-    public int getTime() {
+    public long getTim() {
         //
-        return mTime;
+        return mTim;
     }
 
-    public void setTime(int time) {
+    public void setTim(long tim) {
         //
-        mTime = time;
+        mTim = tim;
     }
 
     public static String getTime(int time) {
