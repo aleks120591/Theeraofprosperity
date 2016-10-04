@@ -55,6 +55,7 @@ public class BuildPagerActivity extends FragmentActivity {
 
             @Override
             public int getCount() {
+                //
                 return mLists.size();
             }
         });

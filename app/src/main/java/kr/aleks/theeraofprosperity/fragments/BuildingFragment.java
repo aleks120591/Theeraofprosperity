@@ -1,8 +1,10 @@
 package kr.aleks.theeraofprosperity.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,12 +19,12 @@ import kr.aleks.theeraofprosperity.R;
 import kr.aleks.theeraofprosperity.data.AboutBuildings;
 import kr.aleks.theeraofprosperity.data.BuildingLab;
 
-import static kr.aleks.theeraofprosperity.R.color.primary_dark_material_dark;
-
 public class BuildingFragment extends Fragment {
 
     private static final String ARG_BUILD_ID = "build_id";
-    private static final String ARG_TIMER = "timer";
+    private static final String DIALOG_TIMER = "DialogTimer";
+
+    private static final int REQUEST_TIMER = 0;
 
     private static final int TIME_SEC = 1000;
 
@@ -35,10 +37,9 @@ public class BuildingFragment extends Fragment {
 
     private CountDownTimer mTimer;
 
-    public static BuildingFragment newInstance(UUID buildId,String timer) {
+    public static BuildingFragment newInstance(UUID buildId, String timer) {
         Bundle args = new Bundle();
         args.putSerializable(ARG_BUILD_ID, buildId);
-        args.putSerializable(ARG_TIMER,timer);
 
         BuildingFragment fragment = new BuildingFragment();
         fragment.setArguments(args);
@@ -49,7 +50,6 @@ public class BuildingFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         UUID buildId = (UUID) getArguments().getSerializable(ARG_BUILD_ID);
-        String timer=(String)getArguments().getSerializable(ARG_TIMER);
         mBuildings = BuildingLab.get(getActivity()).getBuild(buildId);
 
     }
@@ -72,19 +72,23 @@ public class BuildingFragment extends Fragment {
         mBuildingButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                mTimerView.setText("");
-
+                FragmentManager manager = getFragmentManager();
+                TimerPickerFragment dialog = TimerPickerFragment
+                        .newInstance(mBuildings.getTimer());
+                dialog.setTargetFragment(BuildingFragment.this, REQUEST_TIMER);
+                dialog.show(manager, DIALOG_TIMER);
+                /*mTimerView.setText("");
                 mTimer.start();
                 mBuildingButton.setEnabled(false);
-                mBuildingButton.setTextColor(primary_dark_material_dark);
+                mBuildingButton.setTextColor(primary_dark_material_dark);*/
             }
         });
         return v;
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     public class Timers extends CountDownTimer {
@@ -95,7 +99,7 @@ public class BuildingFragment extends Fragment {
 
         @Override
         public void onTick(long l) {
-            mBuildingButton.setText(AboutBuildings.getTime((int)l / 1000));
+            mBuildingButton.setText(AboutBuildings.getTime((int) l / 1000));
         }
 
         @Override

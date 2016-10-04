@@ -40,5 +40,6 @@
     <string name="menu_item_home">Постройки / Ресурсы</string>
     <string name="search_title">search</string>
     <string name="after_construction">После постройки:</string>
+    <string name="timer">0:00:00</string>
 
 </resources>

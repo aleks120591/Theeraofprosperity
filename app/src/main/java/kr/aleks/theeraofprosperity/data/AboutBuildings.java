@@ -46,6 +46,7 @@ public class AboutBuildings {
     }
 
     public String getTimer() {
+        //
         return mTimer;
     }
 
