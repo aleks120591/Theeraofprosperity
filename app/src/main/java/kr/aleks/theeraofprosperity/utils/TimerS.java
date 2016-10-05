@@ -7,7 +7,8 @@ import android.widget.TextView;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
+
+import kr.aleks.theeraofprosperity.R;
 
 public class TimerS {
 
@@ -29,18 +30,12 @@ public class TimerS {
 
                 @Override
                 public void onTick(long l) {
-                    long hours = TimeUnit.MILLISECONDS.toHours(l);
-                    long minutes = TimeUnit.MILLISECONDS.toMinutes(l - hours * 3600 * 1000);
-                    long seconds = TimeUnit.MILLISECONDS.toSeconds(l - (minutes * 60 * 1000 + hours * 3600 * 1000));
-                    mTimeRemaining.setHours((int) hours);
-                    mTimeRemaining.setMinutes((int) minutes);
-                    mTimeRemaining.setSeconds((int) seconds);
-                    getTextView().setText(mTimeFormat.format(mTimeRemaining));
+                    getTextView().setText(getTimers((int) l / 1000));
                 }
 
                 @Override
                 public void onFinish() {
-                    getTextView().setText("00:00:00");
+                    getTextView().setText(R.string.building);
                 }
             };
         } catch (ParseException err) {
@@ -54,6 +49,25 @@ public class TimerS {
 
     public void Stop() {
         mCountDownTimer.cancel();
+    }
+
+    private String getTimers(int time) {
+        String result = "";
+        int hours = time / 3600;
+        int minutes = (time - (hours * 3600)) / 60;
+        int seconds = (time - (hours * 3600) - (minutes * 60));
+        result = String.valueOf(hours) + ":";
+        if (minutes < 10) {
+            result += "0" + String.valueOf(minutes) + ":";
+        } else {
+            result += String.valueOf(minutes) + ":";
+        }
+        if (seconds < 10) {
+            result += "0" + String.valueOf(seconds);
+        } else {
+            result += String.valueOf(seconds);
+        }
+        return result;
     }
 
     public void setTextView(TextView textView) {

@@ -11,8 +11,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 import kr.aleks.theeraofprosperity.R;
 import kr.aleks.theeraofprosperity.data.AboutBuildings;
@@ -33,7 +34,10 @@ public class BuildingFragment extends Fragment {
     private TimerS mTimerS;
     private long time = 0;
     private int hours = 0;
-    private int minutes = 1;
+    private int minutes = 10;
+
+    private static SimpleDateFormat mTimeFormat = new SimpleDateFormat("HH:mm:ss");
+    private static Date mTimeRemaining;
 
     public static BuildingFragment newInstance(UUID buildId) {
         Bundle args = new Bundle();
@@ -68,9 +72,10 @@ public class BuildingFragment extends Fragment {
         mBuildingButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                time = 300000;
+
                 mTimerView.setText("");
 
-                time = TimeUnit.HOURS.toMillis(Long.valueOf(hours)) + TimeUnit.MINUTES.toMillis(Long.valueOf(minutes));
                 mTimerS = new TimerS(getContext(), mBuildingButton, time);
                 mTimerS.Start();
 
