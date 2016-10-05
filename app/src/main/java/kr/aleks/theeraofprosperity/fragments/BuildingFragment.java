@@ -2,7 +2,6 @@ package kr.aleks.theeraofprosperity.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,19 +12,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import kr.aleks.theeraofprosperity.R;
 import kr.aleks.theeraofprosperity.data.AboutBuildings;
 import kr.aleks.theeraofprosperity.data.BuildingLab;
+import kr.aleks.theeraofprosperity.utils.TimerS;
 
 public class BuildingFragment extends Fragment {
 
     private static final String ARG_BUILD_ID = "build_id";
-    private static final String DIALOG_TIMER = "DialogTimer";
-
-    private static final int REQUEST_TIMER = 0;
-
-    private static final int TIME_SEC = 1000;
 
     private AboutBuildings mBuildings;
 
@@ -34,7 +30,10 @@ public class BuildingFragment extends Fragment {
     private TextView mTimerView;
     private Button mBuildingButton;
 
-    private CountDownTimer mTimer;
+    private TimerS mTimerS;
+    private long time = 0;
+    private int hours = 0;
+    private int minutes = 1;
 
     public static BuildingFragment newInstance(UUID buildId) {
         Bundle args = new Bundle();
@@ -65,15 +64,16 @@ public class BuildingFragment extends Fragment {
         mTimerView = (TextView) v.findViewById(R.id.times_building);
         mTimerView.setText(mBuildings.getTimer());
 
-        long tim = mBuildings.getTim();
-        mTimer = new Timers(tim, TIME_SEC);
-
         mBuildingButton = (Button) v.findViewById(R.id.building);
         mBuildingButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 mTimerView.setText("");
-                mTimer.start();
+
+                time = TimeUnit.HOURS.toMillis(Long.valueOf(hours)) + TimeUnit.MINUTES.toMillis(Long.valueOf(minutes));
+                mTimerS = new TimerS(getContext(), mBuildingButton, time);
+                mTimerS.Start();
+
                 mBuildingButton.setEnabled(false);
                 mBuildingButton.setTextColor(R.color.colorBlack);
             }
@@ -84,22 +84,5 @@ public class BuildingFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    public class Timers extends CountDownTimer {
-
-        public Timers(long millisInFuture, long countDownInterval) {
-            super(millisInFuture, countDownInterval);
-        }
-
-        @Override
-        public void onTick(long l) {
-            mBuildingButton.setText(AboutBuildings.getTime((int) l / 1000));
-        }
-
-        @Override
-        public void onFinish() {
-
-        }
     }
 }
